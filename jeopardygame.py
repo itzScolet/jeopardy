@@ -169,7 +169,7 @@ def main(page: ft.Page):
         resultado.color = "yellow"
  
         page.update()
-    def revisar(e):
+    async def revisar(e):
         global puntos
         nonlocal valor_actual
         nonlocal actual
@@ -189,7 +189,7 @@ def main(page: ft.Page):
                 page.update()
                 return
             if user == actual:
-                right_sound.play()
+                await right_sound.play()
                 sumar(valor_actual)
                 correctas += 1
                 right_text.value = f"Right Answers: {correctas}"
@@ -197,7 +197,7 @@ def main(page: ft.Page):
                 resultado.color = "green"
  
             else:
-                wrong_sound.play()
+                await wrong_sound.play()
                 sumar(-valor_actual)
                 incorrectas += 1
                 wrong_text.value = f"Wrong Answers: {incorrectas}"
